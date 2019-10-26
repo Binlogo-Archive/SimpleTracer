@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         case github
         case google
         case bing
+        case zhihu
         
         var host: String {
             switch self {
@@ -23,6 +24,7 @@ class ViewController: UIViewController {
             case .github: return "github.com"
             case .google: return "google.com"
             case .bing: return "bing.com"
+            case .zhihu: return "zhihu.com"
             }
         }
     }
