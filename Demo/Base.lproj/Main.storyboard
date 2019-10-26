@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,87 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tvO-AN-W7c">
+                                <rect key="frame" x="20" y="108" width="374" height="29"/>
+                                <segments>
+                                    <segment title="倍洽"/>
+                                    <segment title="GitHub"/>
+                                    <segment title="谷歌"/>
+                                    <segment title="必应"/>
+                                    <segment title="知乎"/>
+                                </segments>
+                                <connections>
+                                    <action selector="switchHostAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="rxl-yA-g7L"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主机：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="urr-cm-7M1">
+                                <rect key="frame" x="20" y="156" width="52" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.bearychat.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhw-re-aSd">
+                                <rect key="frame" x="82" y="156" width="156" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9k-RP-myg">
+                                <rect key="frame" x="176" y="197" width="62" height="30"/>
+                                <state key="normal" title="开始追踪"/>
+                                <connections>
+                                    <action selector="startTraceAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="izf-l6-EIx"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XYV-IP-YyB">
+                                <rect key="frame" x="20" y="247" width="374" height="635"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">选择一个主机域名开始吧！
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SimpleTracer Demo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VR1-7v-k6g">
+                                <rect key="frame" x="123" y="64" width="168" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="tvO-AN-W7c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="C2p-MA-G0H"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tvO-AN-W7c" secondAttribute="trailing" constant="20" id="DCB-d3-OiN"/>
+                            <constraint firstItem="VR1-7v-k6g" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="PWx-eC-EGf"/>
+                            <constraint firstItem="fhw-re-aSd" firstAttribute="leading" secondItem="urr-cm-7M1" secondAttribute="trailing" constant="10" id="UBn-Ld-QzS"/>
+                            <constraint firstItem="urr-cm-7M1" firstAttribute="top" secondItem="tvO-AN-W7c" secondAttribute="bottom" constant="20" id="UnC-RG-6a9"/>
+                            <constraint firstItem="k9k-RP-myg" firstAttribute="top" secondItem="urr-cm-7M1" secondAttribute="bottom" constant="20" id="YeL-oe-CPX"/>
+                            <constraint firstItem="urr-cm-7M1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="dZ8-P6-fnJ"/>
+                            <constraint firstItem="fhw-re-aSd" firstAttribute="top" secondItem="tvO-AN-W7c" secondAttribute="bottom" constant="20" id="gUA-Ri-Ufi"/>
+                            <constraint firstItem="VR1-7v-k6g" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kei-ji-cpc"/>
+                            <constraint firstItem="tvO-AN-W7c" firstAttribute="top" secondItem="VR1-7v-k6g" secondAttribute="bottom" constant="20" id="pBU-CF-DLT"/>
+                            <constraint firstItem="XYV-IP-YyB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="q79-Hx-HqK"/>
+                            <constraint firstItem="k9k-RP-myg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ttH-kE-qXT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XYV-IP-YyB" secondAttribute="trailing" constant="20" id="uCB-PK-w6g"/>
+                            <constraint firstItem="XYV-IP-YyB" firstAttribute="top" secondItem="k9k-RP-myg" secondAttribute="bottom" constant="20" id="vcr-wy-ae4"/>
+                            <constraint firstItem="XYV-IP-YyB" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="20" id="xQd-do-4Ss"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="hostLabel" destination="fhw-re-aSd" id="WY2-pP-aHR"/>
+                        <outlet property="hostSegmentedControl" destination="tvO-AN-W7c" id="3hZ-VZ-gPW"/>
+                        <outlet property="resultTextView" destination="XYV-IP-YyB" id="vhx-cd-wnB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="98.4375"/>
         </scene>
     </scenes>
 </document>

@@ -10,11 +10,49 @@ import UIKit
 import SimpleTracer
 
 class ViewController: UIViewController {
+    
+    enum TraceTestCase: Int {
+        case bearychat
+        case github
+        case google
+        case bing
+        
+        var host: String {
+            switch self {
+            case .bearychat: return "bearychat.com"
+            case .github: return "github.com"
+            case .google: return "google.com"
+            case .bing: return "bing.com"
+            }
+        }
+    }
+    
+    @IBOutlet weak var hostSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var hostLabel: UILabel!
+    @IBOutlet weak var resultTextView: UITextView!
+    
+    private var testCase: TraceTestCase = .bearychat {
+        didSet {
+            hostLabel.text = testCase.host
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SimpleTracer.trace(host: "www.bearychat.com") { (result) in
+        hostLabel.text = testCase.host
+    }
+    
+    @IBAction func switchHostAction(_ sender: UISegmentedControl) {
+        let value = sender.selectedSegmentIndex
+        guard let selectedTestCase = TraceTestCase(rawValue: value) else { return }
+        testCase = selectedTestCase
+    }
+    
+    @IBAction func startTraceAction(_ sender: Any) {
+        resultTextView.text = "Start Trace, good to go."
+        SimpleTracer.trace(host: testCase.host, logger: self, maxTraceTTL: 15) { [weak self] (result) in
+            self?.resultTextView.text = result
             print(result)
             /**
              Start tracing www.bearychat.com: 54.223.220.218
@@ -35,7 +73,16 @@ class ViewController: UIViewController {
              ### Host responsed, latency (ms): 7.927060127258301 ms
              #14 Data received, size=64
              #14 reach the destination 54.223.220.218, trace completed. It's simple! Right?
-            ***/
+             ***/
+        }
+    }
+    
+}
+
+extension ViewController: SimpleTracerLogger {
+    func logTrace(_ trace: String) {
+        DispatchQueue.main.async {
+            self.resultTextView.text += trace
         }
     }
 }
